@@ -43,12 +43,13 @@ ZMK_BEHAVIOR(lth, hold_tap,
     quick-tap-ms = <150>;
     bindings = <&mo>, <&kp>;
     retro-tap;
+    hold-while-undecided;
 )
 // leader and tap - tap is leader, hold is kp
 ZMK_BEHAVIOR(lead_kp, hold_tap,
     flavor = "balanced";
     tapping-term-ms = <180>;
-    bindings = <&kp>, <&leader1>;
+    bindings = <&kp>, <&leader1>;   
 )
 
 ZMK_LAYER(alpha,
