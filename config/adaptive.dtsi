@@ -22,7 +22,7 @@
         dead-keys = <DK_CAP>; \
         cap { \
             trigger-keys = <DK_CAP>; \
-            bindings = <&kp LS(L)>; \
+            bindings = <&sk LSHFT &kp L>; \
         }; \
     };
 
@@ -62,7 +62,7 @@
         ADAPTIVE_CAP_LETTER(E)
         ADAPTIVE_CAP_LETTER(F)
         ADAPTIVE_CAP_LETTER(G)
-        ADAPTIVE_CAP_LETTER(H)
+        ADAPTIVE_CAP_LETTER(H) 
         ADAPTIVE_CAP_LETTER(I)
         ADAPTIVE_CAP_LETTER(J)
         ADAPTIVE_CAP_LETTER(K)
