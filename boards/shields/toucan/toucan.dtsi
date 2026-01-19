@@ -117,8 +117,12 @@
             >;
         };
         sensitive {
+            layers = <4>;
+            input-processors = <&zip_xy_scaler 200 100>;
+        };
+        xtra_sensitive {
             layers = <5>;
-            input-processors = <&zip_xy_scaler 100 50>;
+            input-processors = <&zip_xy_scaler 150 100>;
         };
     };
 };
