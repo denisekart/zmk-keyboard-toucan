@@ -3,15 +3,93 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include "leader.dtsi"
+#include "custom_behaviors.dtsi"
 
 #define BASE 0
 #define NAV  1
 #define SYM  2
 #define ADJ  3
+#define MOUSE  4
+#define SLOW  5
+
+ZMK_COMBO(esc,  &kp ESC, 0 1, ALL, 30)
+ZMK_COMBO(enter, &kp ENTER, 19 20, ALL, 30)
+ZMK_COMBO(win, &kp LEFT_GUI, 36 37, ALL, 30)
+ZMK_COMBO(slow, &mo SLOW, 15 16, ALL, 30)
+
+ZMK_CONDITIONAL_LAYER(sys, NAV SYM, ADJ)
+
+&sk {
+  release-after-ms = <500>;
+  quick-release;
+};
+
+// layer tap with retro tap - balanced
+ZMK_BEHAVIOR(ltb, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <180>;
+    quick-tap-ms = <150>;
+    bindings = <&mo>, <&kp>;
+    retro-tap;
+    hold-while-undecided;
+)
+
+// layer tap with hold preferred
+ZMK_BEHAVIOR(lth, hold_tap,
+    flavor = "hold-preferred";
+    tapping-term-ms = <180>;
+    quick-tap-ms = <150>;
+    bindings = <&mo>, <&kp>;
+    retro-tap;
+)
+// leader and tap - tap is leader, hold is kp
+ZMK_BEHAVIOR(lead_kp, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <180>;
+    bindings = <&kp>, <&leader1>;
+    hold-while-undecided;
+)
 
 ZMK_LAYER(BASE,
-    &kp TAB   &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-    &kp LCTRL &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                    &kp LGUI &mo 1 &kp SPACE     &kp RET &mo 2 &kp RALT
+    &kp TAB   &kp Q &kp W &kp E &kp R &kp T      &kp Z &kp U  &kp I     &kp O   &kp P    &m_plus_equal
+    &mo MOUSE &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SQT &kp MINUS
+    &kp LCTRL &kp Y &kp X &mod_c &mod_v &kp B    &kp N &kp M  &m_comma_semi &m_dot_colon &m_qmark_excl &m_and_or
+        &lead_kp LALT 0 &kp LSHFT &kp SPACE      &lth SYM BKSP &mo NAV &kp DEL
+)
+
+
+ZMK_LAYER(NAV,
+    &trans &kp N0 &kp N1 &kp N2 &kp N3 &m_open_paren_arrow          &m_close_paren_arrow &kp LC(LEFT) &kp UP &kp LC(RIGHT) &kp DOLLAR &kp STAR
+    &trans  &kp AT &kp N4 &kp N5 &kp N6 &m_open_curly_square        &m_close_curly_square &kp LEFT &kp DOWN &kp RIGHT &kp GRAVE &kp TILDE
+    &trans &kp DOT &kp N7 &kp N8 &kp N9 &kp FSLH                   &kp BSLH &euro_sign &td_equals &arrow_fat &kp PERCENT &kp HASH
+                             &trans &trans &trans                   &trans &trans &trans     
+)
+
+ZMK_LAYER(SYM,
+    &trans &kp F1 &kp F2 &kp F3 &kp F4 &kp F5       &none &none &none &none &none &none
+    &trans &kp F6 &kp F7 &kp F8 &kp F9 &kp F10      &none &none &none &none &none &none
+    &trans &none  &none  &none  &kp F11 &kp F12     &none &none &none &none &none &none
+                        &trans &trans &trans     &trans &trans &trans
+)
+
+ZMK_LAYER(ADJ,
+    &trans &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3       &none &none &none &none &none &none
+    &trans &none &none &none &none &bt BT_CLR                               &none &none &none &none &none &none
+    &trans &none &none &none &out OUT_USB &out OUT_BLE                      &none &none &none &none &none &none
+                    &trans &trans &trans                                    &trans &trans &trans
+)
+
+ZMK_LAYER(MOUSE,
+    &mkp MB4 &mkp MB5 &none &msc SCRL_UP &none &none                                &mkp RCLK &none &mmv MOVE_UP &none &none &none
+    &trans &none &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &none             &mkp MCLK &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none
+    &trans &none &none &none &none &none                                            &mkp LCLK &none &none &none &none &none
+            &mkp MCLK &mkp RCLK &mkp LCLK                                           &mkp LCLK &trans &trans
+)
+
+ZMK_LAYER(SLOW,
+    &trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans             &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans             &trans &trans &trans &trans &trans &trans
+                        &trans &trans &trans              &mkp LCLK &trans &trans
 )
