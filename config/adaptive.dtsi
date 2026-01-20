@@ -1,6 +1,6 @@
 
 
-#define ADAPTIVE_KEY_TIMEOUT 2000
+#define ADAPTIVE_KEY_TIMEOUT 1500
 
 #define ADAPTIVE(NAME, BINDINGS, TRIGGERS) \
     magic_##NAME: magic_##NAME { \
@@ -14,7 +14,6 @@ ZMK_BEHAVIOR(ska, sticky_key,
     bindings = <&kp>;
     release-after-ms = <ADAPTIVE_KEY_TIMEOUT>;
     quick-release;
-    lazy;
 )
 
 ZMK_BEHAVIOR(mc_space_sentence, macro,
@@ -31,7 +30,7 @@ ZMK_BEHAVIOR(mc_space_sentence, macro,
             bindings = <&kp SPACE>;
 
             ADAPTIVE(punct_space , &mc_space_sentence , QMARK EXCL DOT)
-            ADAPTIVE(punct_cancel , &none , LSHFT)
+            ADAPTIVE(punct_cancel , &kp K_CANCEL , LSHFT)
         };
 
     };
