@@ -29,9 +29,6 @@
         SMO(m_open_curly_square, LBRC, LBKT)
         SMO(m_close_curly_square, RBRC, RBKT)
 
-
-        
-
         td_equals: td_equals {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;

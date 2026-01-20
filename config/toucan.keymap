@@ -5,7 +5,6 @@
 #include <dt-bindings/zmk/outputs.h>
 #include "leader.dtsi"
 #include "custom_behaviors.dtsi"
-#include "adaptive.dtsi"
 
 #define BASE 0
 #define NAV  1
@@ -19,6 +18,7 @@ ZMK_COMBO(enter, &kp ENTER, 19 20, ALL, 30)
 ZMK_COMBO(win, &kp LEFT_GUI, 36 37, ALL, 30)
 ZMK_COMBO(slow, &mo SLOW, 15 16, ALL, 30)
 ZMK_COMBO(cancel, &kp K_CANCEL, 10 11, ALL, 30)
+
 ZMK_CONDITIONAL_LAYER(sys, NAV SYM, ADJ)
 
 &sk {
@@ -26,23 +26,12 @@ ZMK_CONDITIONAL_LAYER(sys, NAV SYM, ADJ)
   quick-release;
 };
 
-// layer tap with retro tap - balanced
-ZMK_BEHAVIOR(ltb, hold_tap,
-    flavor = "balanced";
-    tapping-term-ms = <180>;
-    quick-tap-ms = <150>;
-    bindings = <&mo>, <&kp>;
-    retro-tap;
-    hold-while-undecided;
-)
-
 // layer tap with hold preferred
 ZMK_BEHAVIOR(lth, hold_tap,
     flavor = "hold-preferred";
     tapping-term-ms = <180>;
     quick-tap-ms = <150>;
     bindings = <&mo>, <&kp>;
-    retro-tap;
     hold-while-undecided;
 )
 // leader and tap - tap is leader, hold is kp
@@ -82,15 +71,15 @@ ZMK_LAYER(adj,
 )
 
 ZMK_LAYER(move,
-    &mkp MB4 &mkp MB5 &none &msc SCRL_UP &none &none                                &mkp RCLK &none &mmv MOVE_UP &none &none &none
-    &trans &none &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_RIGHT &none             &mkp MCLK &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none
-    &trans &none &none &none &none &none                                            &mkp LCLK &none &none &none &none &none
-            &mkp MCLK &mkp RCLK &mkp LCLK                                           &mkp LCLK &trans &trans
+    &none &none &none &none &mkp MB4 &mkp MB5      &mkp RCLK &kp LC(LEFT) &kp UP &kp LC(RIGHT) &none &none
+    &trans &none &none &none &none &none             &mkp MCLK &kp LEFT &kp DOWN &kp RIGHT &none &none
+    &trans &none &none &none &none &none            &mkp LCLK &none &none &none &none &none
+            &mkp MCLK &mkp RCLK &mkp LCLK           &mkp LCLK &trans &trans
 )
 
 ZMK_LAYER(slow,
-    &trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-    &trans &trans &trans &trans &trans &trans             &trans &trans &trans &trans &trans &trans
-    &trans &trans &trans &trans &trans &trans             &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans              &mkp RCLK &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans             &mkp MCLK &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans             &mkp LCLK &trans &trans &trans &trans &trans
                         &trans &trans &trans              &mkp LCLK &trans &trans
 )
