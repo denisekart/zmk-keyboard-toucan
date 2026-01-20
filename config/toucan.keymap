@@ -27,7 +27,6 @@ ZMK_CONDITIONAL_LAYER(sys, NAV SYM, ADJ)
 &sk {
   release-after-ms = <400>;
   quick-release;
-  lazy;
 };
 
 // layer tap with hold preferred
