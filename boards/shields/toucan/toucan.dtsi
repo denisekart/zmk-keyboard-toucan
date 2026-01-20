@@ -108,7 +108,6 @@
         status = "disabled";
         device = <&glidepoint_split>;
         input-processors = <&zip_xy_scaler 11 5>;
-        track-remainders;
         scroller {
             layers = <1 2 3>;
             input-processors = <
@@ -120,18 +119,15 @@
         slow {
             layers = <4>;
             input-processors = <&zip_xy_scaler 9 5>;
-            track-remainders;
         };
         xtra_slow {
             layers = <5>;
             input-processors = <&zip_xy_scaler 6 5>;
-            track-remainders;
         };
 
         xtra_quick {
             layers = <6>;
             input-processors = <&zip_xy_scaler 3 1>;
-            track-remainders;
         };
     };
 };
