@@ -65,14 +65,14 @@ ZMK_LAYER(nav,
                              &trans &trans &trans                   &trans &trans &trans     
 )
 
-ZMK_LAYER(fn,
+ZMK_LAYER(func,
     &trans &kp F1 &kp F2 &kp F3 &kp F4 &kp F5       &none &none &none &none &none &none
     &trans &kp F6 &kp F7 &kp F8 &kp F9 &kp F10      &none &none &none &none &none &none
     &trans &none  &none  &none  &kp F11 &kp F12     &none &none &none &none &none &none
                         &trans &trans &trans     &trans &trans &trans
 )
 
-ZMK_LAYER(con,
+ZMK_LAYER(conn,
     &trans &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3       &none &none &none &none &none &none
     &trans &none &none &none &none &bt BT_CLR                               &none &none &none &none &none &none
     &trans &none &none &none &out OUT_USB &out OUT_BLE                      &none &none &none &none &none &none
@@ -80,15 +80,15 @@ ZMK_LAYER(con,
 )
 
 ZMK_LAYER(move,
-    &none &none &none &none &mkp MB4 &mkp MB5      &mkp RCLK &kp LC(LEFT) &kp UP &kp LC(RIGHT) &none &none
-    &trans &none &none &none &none &none             &mkp MCLK &kp LEFT &kp DOWN &kp RIGHT &none &none
-    &trans &none &none &none &none &none            &mkp LCLK &none &none &none &none &none
+    &none &none &none &none &mkp MB4 &mkp MB5      &mkp MCLK &kp LC(LEFT) &kp UP &kp LC(RIGHT) &none &none
+    &trans &none &none &none &none &none             &mkp RCLK &kp LEFT &kp DOWN &kp RIGHT &none &none
+    &trans &none &none &none &kp LC(Z) &kp LC(Y)            &mkp LCLK &none &none &none &none &none
             &mkp MCLK &mkp RCLK &mkp LCLK           &mkp LCLK &trans &trans
 )
 
 ZMK_LAYER(slow,
-    &trans &trans &trans &trans &trans &trans              &mkp RCLK &trans &trans &trans &trans &trans
-    &trans &trans &trans &trans &trans &trans             &mkp MCLK &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans              &mkp MCLK &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans             &mkp RCLK &trans &trans &trans &trans &trans
     &trans &trans &trans &trans &trans &trans             &mkp LCLK &trans &trans &trans &trans &trans
                         &trans &trans &trans              &mkp LCLK &trans &trans
 )
