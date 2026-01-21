@@ -93,7 +93,7 @@ ZMK_LAYER(slow,
                         &trans &trans &trans              &mkp LCLK &trans &trans
 )
 
-ZMK_LAYER(quik,
+ZMK_LAYER(warp,
     &trans &trans &trans &trans &trans &trans              &mkp RCLK &trans &trans &trans &trans &trans
     &trans &trans &trans &trans &trans &trans             &mkp MCLK &trans &trans &trans &trans &trans
     &trans &trans &trans &trans &trans &trans             &mkp LCLK &trans &trans &trans &trans &trans
