@@ -32,9 +32,8 @@ ZMK_CONDITIONAL_LAYER(sys, NAV SYM, ADJ)
 
 // layer tap with balanced resolution
 ZMK_BEHAVIOR(ltb, hold_tap,
-    flavor = "balanced";
-    tapping-term-ms = <180>;
-    quick-tap-ms = <150>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <200>;
     bindings = <&mo>, <&kp>;
     hold-while-undecided;
 )
