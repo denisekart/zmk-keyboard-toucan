@@ -17,10 +17,11 @@
 
 ZMK_COMBO(esc,  &kp ESC, 0 1, ALL, 30)
 ZMK_COMBO(enter, &kp ENTER, 19 20, ALL, 30)
-ZMK_COMBO(win, &kp LEFT_GUI, 36 37, ALL, 30)
-ZMK_COMBO(slow, &mo SLOW, 15 16, ALL, 30)
-ZMK_COMBO(quick, &mo QUICK, 16 17, ALL, 30)
+// ZMK_COMBO(win, &kp LEFT_GUI, 36 37, ALL, 30)
+ZMK_COMBO(quick, &mo QUICK, 15 16, ALL, 30)
+ZMK_COMBO(slow, &mo SLOW, 13 14 15 16, ALL, 30)
 ZMK_COMBO(cancel, &kp K_CANCEL, 10 11, ALL, 30)
+ZMK_COMBO(mouse_lclk, &mkp LCLK, 28 29, ALL, 30)
 
 ZMK_CONDITIONAL_LAYER(sys, NAV SYM, ADJ)
 
@@ -37,11 +38,16 @@ ZMK_BEHAVIOR(ltb, hold_tap,
     bindings = <&mo>, <&kp>;
     hold-while-undecided;
 )
-// leader and tap - tap is leader, hold is kp
+
+ZMK_BEHAVIOR(td_lead_win, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&leader1>, <&kp LGUI>; 
+)
+
 ZMK_BEHAVIOR(lead_kp, hold_tap,
     flavor = "balanced";
-    tapping-term-ms = <180>;
-    bindings = <&kp>, <&leader1>;   
+    tapping-term-ms = <200>;
+    bindings = <&kp>, <&td_lead_win>;   
 )
 
 ZMK_LAYER(base,
@@ -66,7 +72,7 @@ ZMK_LAYER(fn,
                         &trans &trans &trans     &trans &trans &trans
 )
 
-ZMK_LAYER(adj,
+ZMK_LAYER(con,
     &trans &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3       &none &none &none &none &none &none
     &trans &none &none &none &none &bt BT_CLR                               &none &none &none &none &none &none
     &trans &none &none &none &out OUT_USB &out OUT_BLE                      &none &none &none &none &none &none
