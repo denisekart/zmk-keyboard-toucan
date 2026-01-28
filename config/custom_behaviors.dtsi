@@ -22,6 +22,7 @@
         SMO(m_dot_colon, DOT, COLON)
         SMO(m_qmark_excl, QMARK, EXCL)
         SMO(m_and_or, AMPS, PIPE)
+        SMO(m_slash, FSLH, BSLH)
 
         SMO(m_open_paren_arrow, LPAR, LT)
         SMO(m_close_paren_arrow, RPAR, GT)

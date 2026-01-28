@@ -21,9 +21,12 @@ ZMK_COMBO(win, &kp LEFT_GUI, 36 37, ALL, 30)
 ZMK_COMBO(quick, &mo QUICK, 15 16, ALL, 30)
 ZMK_COMBO(slow, &mo SLOW, 13 14 15 16, ALL, 30)
 ZMK_COMBO(cancel, &kp K_CANCEL, 10 11, ALL, 30)
-ZMK_COMBO(mouse_lclk, &mkp LCLK, 28 29, ALL, 30)
-ZMK_COMBO(mouse_rclk, &mkp RCLK, 27 28 29, ALL, 30)
-ZMK_COMBO(mouse_mclk, &mkp MCLK, 26 27 28 29, ALL, 30)
+ZMK_COMBO(mouse_lclk_l, &mkp LCLK, 28 29, ALL, 30)
+ZMK_COMBO(mouse_rclk_l, &mkp RCLK, 27 28 29, ALL, 30)
+ZMK_COMBO(mouse_mclk_l, &mkp MCLK, 26 27 28 29, ALL, 30)
+ZMK_COMBO(mouse_lclk_r, &mkp LCLK, 30 31, ALL, 30)
+ZMK_COMBO(mouse_rclk_r, &mkp RCLK, 30 31 32, ALL, 30)
+ZMK_COMBO(mouse_mclk_r, &mkp MCLK, 30 31 32 33, ALL, 30)
 
 ZMK_CONDITIONAL_LAYER(sys, NAV SYM, ADJ)
 
@@ -51,7 +54,7 @@ ZMK_BEHAVIOR(lead_kp, hold_tap,
 ZMK_LAYER(base,
     &kp TAB   &kp Q &kp W &kp E &kp R &kp T      &kp Z &kp U  &kp I     &kp O   &kp P    &m_plus_equal
     &mo MOUSE &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SQT &kp MINUS
-    &kp LCTRL &kp Y &kp X &mod_c &mod_v &kp B    &kp N &kp M  &m_comma_semi &m_dot_colon &m_qmark_excl &m_and_or
+    &kp LCTRL &kp Y &kp X &mod_c &mod_v &kp B    &kp N &kp M  &m_comma_semi &m_dot_colon &m_qmark_excl &m_slash
         &lead_kp LALT 0 &sk LSHFT &ak_space      &ltb SYM BKSP &mo NAV &kp DEL
 )
 
@@ -59,14 +62,14 @@ ZMK_LAYER(base,
 ZMK_LAYER(nav,
     &trans &kp N0 &kp N1 &kp N2 &kp N3 &m_open_paren_arrow          &m_close_paren_arrow &kp LC(LEFT) &kp UP &kp LC(RIGHT) &kp DOLLAR &kp STAR
     &trans  &kp AT &kp N4 &kp N5 &kp N6 &m_open_curly_square        &m_close_curly_square &kp LEFT &kp DOWN &kp RIGHT &kp GRAVE &kp TILDE
-    &trans &kp DOT &kp N7 &kp N8 &kp N9 &kp FSLH                   &kp BSLH &euro_sign &td_equals &arrow_fat &kp PERCENT &kp HASH
+    &trans &kp DOT &kp N7 &kp N8 &kp N9 &kp AMPS                   &kp PIPE &euro_sign &td_equals &arrow_fat &kp PERCENT &kp HASH
                              &trans &kp LSHFT &trans                   &trans &trans &trans     
 )
 
 ZMK_LAYER(func,
-    &trans &kp F1 &kp F2 &kp F3 &kp F4 &kp F5       &none &none &none &none &none &none
-    &trans &kp F6 &kp F7 &kp F8 &kp F9 &kp F10      &none &none &none &none &none &none
-    &trans &none  &none  &none  &kp F11 &kp F12     &none &none &none &none &none &none
+    &trans &kp F1 &kp F2 &kp F3 &kp F4 &kp F5       &mkp MCLK &none &none &none &none &none
+    &trans &kp F6 &kp F7 &kp F8 &kp F9 &kp F10      &mkp RCLK &none &none &none &none &none
+    &trans &none  &none  &none  &kp F11 &kp F12     &mkp LCLK &none &none &none &none &none
                         &trans &kp LSHFT &trans     &trans &trans &trans
 )
 
